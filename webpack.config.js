@@ -3,9 +3,9 @@ var path = require('path');
 
 module.exports = {
     context: __dirname,
-    entry: './entry.jsx',
+    entry: './src/index.js',
     output: {
-        path: path.join(__dirname),
+        path: path.join(__dirname, 'dist'),
         filename: 'bundle.js',
     },
     module: {
