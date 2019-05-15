@@ -21,37 +21,33 @@ The app will consist of a single page with an upload audio file modal, audio con
 * `D3.js` for rendering the audio visualization. 
 
 ##### Main files
-* `audio.js` main structure of the canvas and center of game logic.
-* `audio.js` main structure of the canvas and center of game logic.
+* `main.js` handle creating and updating DOM elements.
+* `audio.js` handle audio processing and controls.
+* `visualizer.js` handle audio visualization and controls.
 
 ### MVPs
-- [] Basic visuals and an interactive interface.
-- [] Player can move avatar around the circle.
-- [] Obstacles generate and move outward toward the edge of the circle.
-- [] Obstacles cause 'Game Over' upon collision.
-- [] Window styling scoreboard modal.
+- [] Uploading a new audio file.
+- [] Basic controls (play/pause) for an uploaded file. 
+- [] Basic visualizer settings (color, style, size, speed)
 
 ### Development timeline
 
 ##### Day 1:
-- [] Briefly review games using canvas from the instructional curriculum.
+- [] Review `Web Audio API` and `D3.js` 
 - [] Complete basic page skeleton and functionality.
-- [] Complete board design and rendering.
 
 ##### Day 2:
-- [] Complete player avatar rendering and functionality.
-- [] Start obstacle rendering and functionality.
-- [] Ideally finish obstacle rendering and functionality.
+- [] Complete audio file upload functionality.
+- [] Complete audio controls functionality.
+- [] Start on visualizer rendering and functionality.
 
 ##### Day 3:
-- [] Implement obstacle/player collision.
-- [] Finish game over condition.
-- [] Scoreboard rendering.
+- [] Complete visualization settings functionality.
+- [] Refine visualizer rendering and functionality.
 
 ##### Day 4:
-- [] Add flair and flashy visuals.
+- [] Add more complex visualization options.
 - [] Finish styling page.
-- [] Complete MVPs and iron out project.
 
 ##### Day 5:
 - [] Implement bonus features.
