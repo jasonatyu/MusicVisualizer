@@ -1,19 +1,48 @@
 body {
    background-color: #272B34; 
+   width: 100%;
+   height: 100%;
    position: relative;
    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 #controls {
     position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     top: 10px; 
     right: 10px;
     color: #eee;
     font-size: 12px;
+    width: 40vw;
+}
+
+.fas {
+    color: #eee;
 }
 
 #canvas {
     background-color: #272B34;
+}
+
+.fa-play, .fa-pause, .fa-plus {
+    font-size: 20px;
+    background-color: transparent;
+}
+
+#controls-audio-link {
+    background-color: transparent;
+    border: none;
+}
+
+.controls-play {
+    background-color: transparent;
+    border: none;
+}
+
+.fa-play:hover, .fa-pause:hover, .fa-plus:hover {
+    cursor: pointer;
 }
 
 button[data-playing="true"] .fa-play {
@@ -47,9 +76,119 @@ button[data-playing="false"] .fa-pause {
 }
 
 #modal-form {
+    background-color: lightgray;
+    color: #272B34;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19);
     text-align: center;
+    border: none;
+    border-radius: 3px;
+    padding: 10px;
+    font-size: 13px;
+    width: 240px;
+}
+
+#modal-form h2 {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#modal-form input {
+    border: none;
+    border-radius: 2px;
+    height: 24px;
+}
+
+#modal-form input[type="text"] {
+    width: 80%;
+}
+
+#modal-form input[type="submit"] {
+    font-weight: 600;
+}
+
+#modal-form input[type="submit"]:hover {
+    cursor: pointer;
+    background-color: #FAA619;
+    color: #eee;
+}
+
+#soundcloudForm {
+    display: flex;
+    justify-content: space-between;
 }
 
 #close:hover {
     cursor: pointer;
+}
+
+#visual-controls {
+    background-color: lightgray;
+    border-radius: 3px;
+    position: absolute;
+    width: 20vw;
+    min-width: 180px;
+    height: 300px;
+    z-index: 100;
+    top: 50px;
+    right: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19)
+}
+
+#visual-controls h3 {
+    color: #272B34;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#visual-controls p {
+    color: #272B34;
+    font-size: 13px;
+    text-align: center;
+    margin: 10px;
+}
+
+.upload-btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  /* border: none;
+  background-color: transparent; */
+}
+
+.upload-btn input[type=file] {
+  /* font-size: 100px; */
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.fa-arrow-up:hover {
+    cursor: pointer;
+}
+
+.fa-arrow-up {
+    font-size: 24px;
+}
+
+#background-color {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#dark {
+    background-color: #272B34;
+    border-radius: 100%;
+    height: 20px;
+    width: 20px;
+}
+
+#light {
+    background-color: #ffe0bd;
+    border-radius: 100%;
+    height: 20px;
+    width: 20px;
 }

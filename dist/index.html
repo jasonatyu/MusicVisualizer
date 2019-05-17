@@ -14,9 +14,12 @@
 <body>
     <section id='controls'>
         <input type="radio" name="visualization" value="default" checked> Default
-        <input type="radio" name="visualization" value="drunken"> Awkwark
+        <input type="radio" name="visualization" value="drunken"> Awkward
         <input type="radio" name="visualization" value="other"> Other
-        <input type="file" id="audio-file" accept="audio/*" />
+        <div class="upload-btn">
+            <span><i class="fas fa-arrow-up"></i></span>
+            <input type="file" id="audio-file" accept="audio/*" />
+        </div>
         <button id="controls-audio-link">
             <span><i class="fas fa-plus"></i></span>
         </button>
@@ -41,6 +44,15 @@
         </div>
     </div>
     <canvas id="canvas" height="500" width="500"></canvas>
+    <section id="visual-controls">
+        <h3>About</h3>
+        <p>Visualize your audio. Start by either uploading a song file or entering a valid audio URL.</p>
+        <h3>Settings</h3>
+        <ul id="background-color">
+            <button id="dark"></button>
+            <button id="light"></button>
+        </ul>
+    </section>
     <audio id="audio" crossorigin = "anonymous"></audio>
 </body>
 </html>

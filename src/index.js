@@ -2,10 +2,9 @@ const Visualizer = require('./visualizer');
 const DrunkenCircles = require('./drunken_circles');
 
 document.addEventListener("DOMContentLoaded", () => {
-    const canvas = document.getElementById("canvas");
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;   
-    canvas.height = window.innerHeight;
+    let canvas = document.getElementById("canvas");
+    let ctx = canvas.getContext("2d");
+    clearCanvas();
 
     // create audio context
     const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -19,12 +18,60 @@ document.addEventListener("DOMContentLoaded", () => {
     track.connect(analyzer);
     gainNode.connect(audioCtx.destination);
 
-    const visualizer = new Visualizer(canvas, ctx, analyzer);
-    visualizer.draw();
+    let visualizer = new Visualizer(analyzer);
+    let drunken = new DrunkenCircles(canvas, analyzer);
+    let checked;
+    const radio = document.getElementsByName("visualization");
+    for (let i = 0; i < radio.length; i++) {
+        if (radio[i].checked) {
+            checked = radio[i].value 
+        }
+        radio[i].onclick = function () {
+            if (radio[i].value === 'default') {
+                clearCanvas();
+                checked = 'default';
+            } else if (radio[i].value === 'drunken') {
+                clearCanvas();
+                checked = 'drunken';
+            }
+        }
+    }
+    
+    let fillStyle = "#272B34";
 
-    // const drunken = new DrunkenCircles(canvas, ctx, analyzer);
-    // drunken.draw();
+    function loop() {
+        requestAnimationFrame(loop)
+        if (checked === 'default') {
+            visualizer.draw(fillStyle, canvas, ctx)
+        } else if (checked === 'drunken') {
+            drunken.draw(fillStyle, ctx)
+        }
+    }
+    loop();
 
+    // visual settings 
+    const dark = document.getElementById("dark")
+    const light = document.getElementById("light")
+    const controls = document.getElementById("controls");
+    const controlButtons = document.getElementsByClassName("fas");
+
+    dark.addEventListener("click", function() {
+        fillStyle = "#272B34";
+        controls.style.color = "#eee";
+        Array.from(controlButtons).forEach((button) => button.style.color = "#eee");
+        // visualizer.draw(fillStyle, canvas, ctx);
+    });
+
+    light.addEventListener("click", function () {
+        fillStyle = "#ffe0bd";
+        controls.style.color = "#272B34";
+        Array.from(controlButtons).forEach((button) => button.style.color = "#272B34");
+
+        // visualizer.draw(fillStyle, canvas, ctx);
+    });
+
+
+    // settings 
     const playButton = document.querySelector('.controls-play');
 
     //enable file upload
@@ -82,6 +129,13 @@ document.addEventListener("DOMContentLoaded", () => {
         audioElement.play();
     }
 
-
+    function clearCanvas() {
+        canvas.width = canvas.width;
+        canvas.height = canvas.height;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.beginPath();
+    }
 
 });
