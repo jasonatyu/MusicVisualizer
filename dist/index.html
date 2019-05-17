@@ -3,11 +3,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <script src="https://d3js.org/d3.v5.js"></script>
     <script src="bundle.js"></script>
-    <title>Document</title>
+    <title>Music Visualizer</title>
 </head>
 <body>
-    <canvas id="music-viz-canvas"></canvas>
+    <section id='controls'>
+        <input type="radio" name="visualization" value="default" checked> Default
+        <input type="radio" name="visualization" value="drunken"> Awkwark
+        <input type="radio" name="visualization" value="other"> Other
+        <input type="file" id="audio-file" accept="audio/*" />
+        <button id="controls-audio-link">
+            <span><i class="fas fa-plus"></i></span>
+        </button>
+        <button class="controls-play" data-playing="false">
+            <span><i class="fas fa-play"></i></span>
+            <span><i class="fas fa-pause"></i></span>
+        </button>
+    </section>
+    <div id="soundcloud-modal" class="modal">
+        <div class="modal-content">
+            <span id="close">&times;</span>
+            <br />
+            <br />
+            <section id='modal-form'>
+                <h2>Play a song from a URL</h2>
+                <br />
+                <form id="soundcloudForm">
+                    <input type="text" name="soundcloudUrl"/>
+                    <input type="submit" value="Play">
+                </form>
+            </section>
+        </div>
+    </div>
+    <canvas id="canvas" height="500" width="500"></canvas>
+    <audio id="audio" crossorigin = "anonymous"></audio>
 </body>
 </html>
