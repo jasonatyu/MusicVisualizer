@@ -21,7 +21,7 @@ The app will consist of a single page with an upload audio file modal, audio con
 * `D3.js` for rendering the audio visualization. 
 
 ##### Main files
-* `main.js` handle creating and updating DOM elements.
+* `index.js` handle creating and updating DOM elements.
 * `audio.js` handle audio processing and controls.
 * `visualizer.js` handle audio visualization and controls.
 
