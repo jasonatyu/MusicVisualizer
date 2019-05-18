@@ -15,7 +15,7 @@ body {
     right: 10px;
     color: #eee;
     font-size: 12px;
-    width: 40vw;
+    min-width: 40vw;
 }
 
 .fas {
@@ -26,9 +26,14 @@ body {
     background-color: #272B34;
 }
 
-.fa-play, .fa-pause, .fa-plus {
+.fa-play, .fa-pause, .fa-plus, .fa-vial {
     font-size: 20px;
     background-color: transparent;
+}
+
+#controls-audio-demo {
+    background-color: transparent;
+    border: none;
 }
 
 #controls-audio-link {
@@ -41,7 +46,7 @@ body {
     border: none;
 }
 
-.fa-play:hover, .fa-pause:hover, .fa-plus:hover {
+.fa-play:hover, .fa-pause:hover, .fa-plus:hover, .fa-vial:hover {
     cursor: pointer;
 }
 

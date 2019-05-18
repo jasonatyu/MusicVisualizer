@@ -30,7 +30,7 @@ class Bars {
             grd.addColorStop(1, "white");
 
             // let rect = new Rectangle(x, canvas.height - barHeight, "rgb(" + r + "," + g + "," + b + ")", barWidth, barHeight)
-            let rect = new Rectangle(x, (canvas.height - barHeight)+200, grd, barWidth, barHeight)
+            let rect = new Rectangle(x, (canvas.height - barHeight)+100, grd, barWidth, barHeight)
             rect.draw(ctx);
             x += barWidth + 1;
         }

@@ -1,5 +1,5 @@
 const Visualizer = require('./visualizer');
-const DrunkenCircles = require('./drunken_circles');
+const MovingCircles = require('./moving_circles');
 const BeatingCircle = require('./beating_circle');
 const Bars = require('./bars');
 
@@ -20,10 +20,15 @@ document.addEventListener("DOMContentLoaded", () => {
     track.connect(analyzer);
     gainNode.connect(audioCtx.destination);
 
+    // initialize visualizations 
+
     let visualizer = new Visualizer(analyzer);
-    let drunken = new DrunkenCircles(canvas, analyzer);
+    let movingCircles = new MovingCircles(canvas, analyzer);
     let beatingCircle = new BeatingCircle(analyzer);
     let bars = new Bars(analyzer);
+
+    // detect which visualization is checked 
+
     let checked;
     const radio = document.getElementsByName("visualization");
     for (let i = 0; i < radio.length; i++) {
@@ -44,9 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     // default fill style 
+
     let fillStyle = "#272B34";
 
     // request animation frame 
+
     function loop() {
         requestAnimationFrame(loop)
         if (checked === 'default') {
@@ -54,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
             visualizer.draw(fillStyle, canvas, ctx)
         } else if (checked === 'drunken') {
             clearCanvas();
-            drunken.draw(fillStyle, ctx)
+            movingCircles.draw(fillStyle, ctx)
         } else if (checked === 'beating') {
             clearCanvas();
             beatingCircle.draw(fillStyle, canvas, ctx)
@@ -95,10 +102,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    // settings 
+    // audio settings 
+    const demo = document.querySelector('#controls-audio-demo');
+
+    demo.addEventListener('click', function() {
+        if (audioCtx.state === 'suspended') {
+            audioElement.src = 'https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/AudioPreview128/v4/47/93/39/4793396d-2fc8-4113-df87-4b361c2d40cd/mzaf_2242804860096860666.plus.aac.p.m4a';
+            audioCtx.resume();
+            audioElement.play();
+            playButton.dataset.playing === 'true';
+        }
+    });
+    
     const playButton = document.querySelector('.controls-play');
 
-    //enable file upload
+    // enable file upload
     const audioFile = document.querySelector('#audio-file');
     audioFile.addEventListener('change', function () {
         const file = this.files[0];
@@ -124,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     })
 
-    //modal 
+    // modal for song url 
     const modal = document.getElementById("soundcloud-modal");
     const soundcloudButton = document.getElementById("controls-audio-link");
     const closeButton = document.getElementById("close");
@@ -155,9 +173,10 @@ document.addEventListener("DOMContentLoaded", () => {
         audioCtx.resume();
         audioElement.play();
         playButton.dataset.playing === 'true';
-
     }
 
+    // clear canvas 
+    
     function clearCanvas() {
         canvas.width = canvas.width;
         canvas.height = canvas.height;
