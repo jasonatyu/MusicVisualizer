@@ -72,7 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // visual settings 
     const dark = document.getElementById("dark")
     const light = document.getElementById("light")
-    const usa = document.getElementById("usa")
     const desert = document.getElementById("desert")
     const space = document.getElementById("space")
     const tundra = document.getElementById("tundra")
@@ -91,16 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
         Array.from(controlButtons).forEach((button) => button.style.color = "#272B34");
     });
 
-    usa.addEventListener("click", function () {
-        const grd = ctx.createLinearGradient(0, 0, canvas.width, canvas.height)
-        grd.addColorStop(0, "red");
-        grd.addColorStop(.9, "white");
-        grd.addColorStop(1, "blue");
-        fillStyle = grd;
-        controls.style.color = "#272B34";
-        Array.from(controlButtons).forEach((button) => button.style.color = "#272B34");
-    });
-
     desert.addEventListener("click", function () {
         options = Object.assign({}, options, { primary: "#ff0000", secondary: "#ff8d00", tertiary: "#ffdc07" });
     });
@@ -110,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     tundra.addEventListener("click", function () {
-        options = Object.assign({}, options, { primary: "#2A8EE0", secondary: "#B5E8FF", tertiary: "#FFFFFF" });
+        options = Object.assign({}, options, { primary: "#0c084c", secondary: "#096386", tertiary: "#FFFFFF" });
     });    
 
 

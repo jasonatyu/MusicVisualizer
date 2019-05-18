@@ -206,12 +206,6 @@ button[data-playing="false"] .fa-pause {
     width: 20px;
 }
 
-#usa {
-    background-image: linear-gradient(red, white, blue);
-    border-radius: 100%;
-    height: 20px;
-    width: 20px;
-}
 
 #theme {
     display: flex;
@@ -233,7 +227,7 @@ button[data-playing="false"] .fa-pause {
 }
 
 #tundra {
-    background-image: linear-gradient(#2A8EE0, #B5E8FF, #FFFFFF);
+    background-image: linear-gradient(#0c084c, #096386, #FFFFFF);
     border-radius: 100%;
     height: 20px;
     width: 20px;
