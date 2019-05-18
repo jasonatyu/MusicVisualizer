@@ -1,8 +1,5 @@
 const Shape = require('./shape');
 
-HEX_DIGITS = "0123456789ABCDEF";
-
-
 class Circle extends Shape {
     constructor(x, y, color, radius) {
         super(x, y, color);
@@ -19,22 +16,16 @@ class Circle extends Shape {
     static randomCircle(maxX, maxY, numCircles) {
         return new Circle(maxX * Math.random(), 
         maxY * Math.random(), 
-        Circle.randomColor(),
-        Circle.radius(maxX, maxY, numCircles)
+        "#FFFFFF", 1
         )
     }
 
-    static randomColor() {
-        let color = "#FFFFFF";
-        return color;
-    };
-
-    static radius(maxX, maxY, numCircles) {
-        // let targetCircleArea = (maxX * maxY) / numCircles;
-        // let targetRadius = Math.sqrt(targetCircleArea / Math.PI);
-        // return 2 * targetRadius;
-        return 1;
-    }
+    // static radius(maxX, maxY, numCircles) {
+    //     // let targetCircleArea = (maxX * maxY) / numCircles;
+    //     // let targetRadius = Math.sqrt(targetCircleArea / Math.PI);
+    //     // return 2 * targetRadius;
+    //     return 1;
+    // }
 
     moveRandom(maxX, maxY) {
         let dx = Math.random();
