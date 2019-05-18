@@ -23,7 +23,7 @@ class BeatingCircle {
         circle.draw(ctx);
 
         ctx.save();
-        ctx.translate(300, 300);
+        ctx.translate(circle.x, circle.y);
 
         let bars = 180;
         for (let i = 0; i < 360; i += (360 / bars)) {

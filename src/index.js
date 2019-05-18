@@ -21,14 +21,12 @@ document.addEventListener("DOMContentLoaded", () => {
     gainNode.connect(audioCtx.destination);
 
     // initialize visualizations 
-
     let visualizer = new Visualizer(analyzer);
     let movingCircles = new MovingCircles(canvas, analyzer);
     let beatingCircle = new BeatingCircle(analyzer);
     let bars = new Bars(analyzer);
 
     // detect which visualization is checked 
-
     let checked;
     const radio = document.getElementsByName("visualization");
     for (let i = 0; i < radio.length; i++) {
@@ -49,11 +47,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     // default fill style 
-
     let fillStyle = "#272B34";
 
     // request animation frame 
-
     function loop() {
         requestAnimationFrame(loop)
         if (checked === 'default') {
@@ -110,6 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
             audioElement.src = 'https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/AudioPreview128/v4/47/93/39/4793396d-2fc8-4113-df87-4b361c2d40cd/mzaf_2242804860096860666.plus.aac.p.m4a';
             audioCtx.resume();
             audioElement.play();
+            visualizer.resetPeak();
             playButton.dataset.playing = 'true';
         }
     });
@@ -124,6 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
         audioElement.src = src;
         audioCtx.resume();
         audioElement.play();
+        visualizer.resetPeak();
         playButton.dataset.playing = 'true';
     });
 
@@ -172,11 +170,11 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.style.display = "none";
         audioCtx.resume();
         audioElement.play();
+        visualizer.resetPeak();
         playButton.dataset.playing = 'true';
     }
 
     // clear canvas 
-
     function clearCanvas() {
         canvas.width = canvas.width;
         canvas.height = canvas.height;
