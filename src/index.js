@@ -48,13 +48,14 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // default fill style 
     let fillStyle = "#272B34";
+    let options = {};
 
     // request animation frame 
     function loop() {
         requestAnimationFrame(loop)
         if (checked === 'default') {
             clearCanvas();
-            visualizer.draw(fillStyle, canvas, ctx)
+            visualizer.draw(fillStyle, canvas, ctx, options=options)
         } else if (checked === 'drunken') {
             clearCanvas();
             movingCircles.draw(fillStyle, ctx)
@@ -78,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
     dark.addEventListener("click", function() {
         fillStyle = "#272B34";
         controls.style.color = "#eee";
+        options = Object.assign({}, options, { primary: "green" });
         Array.from(controlButtons).forEach((button) => button.style.color = "#eee");
     });
 
@@ -105,10 +107,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (audioCtx.state === 'suspended') {
             audioElement.src = 'https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/AudioPreview128/v4/47/93/39/4793396d-2fc8-4113-df87-4b361c2d40cd/mzaf_2242804860096860666.plus.aac.p.m4a';
             audioCtx.resume();
-            audioElement.play();
-            visualizer.resetPeak();
-            playButton.dataset.playing = 'true';
         }
+        audioElement.play();
+        visualizer.resetPeak();
+        playButton.dataset.playing = 'true';
     });
     
     const playButton = document.querySelector('.controls-play');

@@ -1,4 +1,5 @@
 const Shape = require('./shape');
+const Utils = require('./utils');
 
 class Circle extends Shape {
     constructor(x, y, color, radius) {
@@ -16,7 +17,7 @@ class Circle extends Shape {
     static randomCircle(maxX, maxY, numCircles) {
         return new Circle(maxX * Math.random(), 
         maxY * Math.random(), 
-        "#FFFFFF", 1
+        Utils.randomColor(), 1
         )
     }
 
@@ -34,8 +35,8 @@ class Circle extends Shape {
         this.y = Math.abs((this.y + (dy * this.radius * 0.1)) % maxY);
     }
 
-    updateRadius(rms) {
-        this.radius = rms*.03;
+    updateRadius(n, factor) {
+        this.radius = n*factor;
     }
 
 }

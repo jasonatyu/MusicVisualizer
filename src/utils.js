@@ -9,6 +9,8 @@ const Utils = {
         rms = Math.sqrt(values / arr.length);
         return rms;
     },
+
+    // from 'drunken circles' 
     randomColor() {
         let color = "#";
         for (let i = 0; i < 6; i++) {

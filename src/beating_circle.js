@@ -10,6 +10,11 @@ class BeatingCircle {
         this.analyzer.fftSize = 2048;
         this.peak = 50;
         this.currentRadius = this.radius;
+
+        this.circles = [];
+        for (let i = 0; i < NUM_CIRCLES; i++) {
+            this.circles.push(Circle.randomCircle(canvas.width, canvas.height, NUM_CIRCLES));
+        }
     }
 
     draw(fillStyle, canvas, ctx) {
@@ -32,13 +37,12 @@ class BeatingCircle {
             ctx.rotate(2 * Math.PI / 180);
             const grd = ctx.createLinearGradient(0, 0, 300, 0)
             grd.addColorStop(0, "red");
-            grd.addColorStop(.5, "orange");
+            grd.addColorStop(.8, "orange");
             grd.addColorStop(1, "white");
             const rect = new Rectangle(rms, -barWidth / 2, grd, barHeight, barWidth)
             rect.draw(ctx);
         }
         ctx.restore();
-
     }
 }
 

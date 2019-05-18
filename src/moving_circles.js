@@ -22,7 +22,7 @@ class MovingCircles {
     }
 
     updateRadius(rms) {
-        this.circles.forEach((circle) => circle.updateRadius(rms))
+        this.circles.forEach((circle) => circle.updateRadius(rms, .03))
     }
 
     draw(fillStyle, ctx) {
@@ -34,7 +34,6 @@ class MovingCircles {
         this.moveCircles();
         this.updateRadius(rms);
     }
-
 }
 
 module.exports = MovingCircles;

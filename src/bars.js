@@ -1,4 +1,5 @@
 const Rectangle = require('./rectangle');
+const Utils = require('./utils');
 
 class Bars {
     constructor(analyzer) {
@@ -32,7 +33,7 @@ class Bars {
             // let rect = new Rectangle(x, canvas.height - barHeight, "rgb(" + r + "," + g + "," + b + ")", barWidth, barHeight)
             let rect = new Rectangle(x, (canvas.height - barHeight)+100, grd, barWidth, barHeight)
             rect.draw(ctx);
-            x += barWidth + 1;
+            x += barWidth;
         }
     }
 }

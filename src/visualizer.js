@@ -13,11 +13,10 @@ class Visualizer {
     }
 
     resetPeak() {
-        console.log('peak reset');
         this.peak = 50;
     }
 
-    draw(fillStyle, canvas, ctx) { 
+    draw(fillStyle, canvas, ctx, options) { 
         ctx.fillStyle = fillStyle;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         this.analyzer.getByteFrequencyData(this.dataArray);
@@ -35,18 +34,18 @@ class Visualizer {
 
         // start at top left of circle; 
         ctx.save();
-        ctx.translate(150, 150);
+        ctx.translate(circle.x, circle.y);
 
         let bars = 360;
         for (let i = 0; i < 360; i += (360/bars)) {
             const barWidth = (2 * Math.PI * rms) / bars;
             const barHeight = (canvas.height * (this.dataArray[i] / 255));
             ctx.rotate(1 * Math.PI / 180);
-            const grd = ctx.createLinearGradient(0, 0, canvas.height, 0)
-            grd.addColorStop(0, "red");
-            grd.addColorStop(.5, "orange");
-            grd.addColorStop(1, "white");
-            const rect = new Rectangle(rms, -barWidth / 2, grd, barHeight * 2, barWidth)
+            const grd = ctx.createLinearGradient(0, 0, canvas.height, 0);
+            grd.addColorStop(0, options.primary ? options.primary : "red");
+            grd.addColorStop(.5, options.secondary ? options.secondary : "orange");
+            grd.addColorStop(1, options.tertiary ? options.tertiary : "white");
+            const rect = new Rectangle(rms, -barWidth / 2, grd, barHeight * 2, barWidth);
             rect.draw(ctx);
         }
         ctx.restore();
