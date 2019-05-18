@@ -55,16 +55,16 @@ document.addEventListener("DOMContentLoaded", () => {
         requestAnimationFrame(loop)
         if (checked === 'default') {
             clearCanvas();
-            visualizer.draw(fillStyle, canvas, ctx, options=options)
+            visualizer.draw(fillStyle, canvas, ctx, options = options)
         } else if (checked === 'drunken') {
             clearCanvas();
             movingCircles.draw(fillStyle, ctx)
         } else if (checked === 'beating') {
             clearCanvas();
-            beatingCircle.draw(fillStyle, canvas, ctx)
+            beatingCircle.draw(fillStyle, canvas, ctx, options = options)
         } else if (checked === 'bars') {
             clearCanvas();
-            bars.draw(fillStyle, canvas, ctx)
+            bars.draw(fillStyle, canvas, ctx, options = options)
         }
     }
     loop();
@@ -73,13 +73,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const dark = document.getElementById("dark")
     const light = document.getElementById("light")
     const usa = document.getElementById("usa")
+    const desert = document.getElementById("desert")
+    const space = document.getElementById("space")
+    const tundra = document.getElementById("tundra")
     const controls = document.getElementById("controls");
     const controlButtons = document.getElementsByClassName("fas");
 
     dark.addEventListener("click", function() {
         fillStyle = "#272B34";
         controls.style.color = "#eee";
-        options = Object.assign({}, options, { primary: "green" });
         Array.from(controlButtons).forEach((button) => button.style.color = "#eee");
     });
 
@@ -98,6 +100,18 @@ document.addEventListener("DOMContentLoaded", () => {
         controls.style.color = "#272B34";
         Array.from(controlButtons).forEach((button) => button.style.color = "#272B34");
     });
+
+    desert.addEventListener("click", function () {
+        options = Object.assign({}, options, { primary: "#ff0000", secondary: "#ff8d00", tertiary: "#ffdc07" });
+    });
+
+    space.addEventListener("click", function () {
+        options = Object.assign({}, options, { primary: "#141717", secondary: "#4a5457", tertiary: "#e1e5e6" });
+    });
+
+    tundra.addEventListener("click", function () {
+        options = Object.assign({}, options, { primary: "#2A8EE0", secondary: "#B5E8FF", tertiary: "#FFFFFF" });
+    });    
 
 
     // audio settings 

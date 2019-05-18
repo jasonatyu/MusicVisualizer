@@ -10,7 +10,7 @@ class Bars {
         this.peak = 50;
     }
 
-    draw(fillStyle, canvas, ctx) { 
+    draw(fillStyle, canvas, ctx, options) { 
         ctx.fillStyle = fillStyle;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         this.analyzer.getByteFrequencyData(this.dataArray);
@@ -26,9 +26,9 @@ class Bars {
             // const b = 255 * (i / this.bufferLength);
 
             const grd = ctx.createLinearGradient(0, 0, canvas.width, 0)
-            grd.addColorStop(0, "blue");
-            grd.addColorStop(.8, "green");
-            grd.addColorStop(1, "white");
+            grd.addColorStop(0, options.primary ? options.primary : "blue");
+            grd.addColorStop(.8, options.secondary ? options.secondary : "green");
+            grd.addColorStop(1, options.tertiary ? options.tertiary : "white");
 
             // let rect = new Rectangle(x, canvas.height - barHeight, "rgb(" + r + "," + g + "," + b + ")", barWidth, barHeight)
             let rect = new Rectangle(x, (canvas.height - barHeight)+100, grd, barWidth, barHeight)

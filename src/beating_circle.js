@@ -17,7 +17,7 @@ class BeatingCircle {
         }
     }
 
-    draw(fillStyle, canvas, ctx) {
+    draw(fillStyle, canvas, ctx, options) {
 
         ctx.fillStyle = fillStyle;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -35,10 +35,10 @@ class BeatingCircle {
             const barWidth = (2 * Math.PI * rms) / bars;
             const barHeight = (canvas.height * (this.dataArray[i] / 255)) * .1;
             ctx.rotate(2 * Math.PI / 180);
-            const grd = ctx.createLinearGradient(0, 0, 300, 0)
-            grd.addColorStop(0, "red");
-            grd.addColorStop(.8, "orange");
-            grd.addColorStop(1, "white");
+            const grd = ctx.createLinearGradient(0, 0, 250, 0)
+            grd.addColorStop(0, options.primary ? options.primary : "red");
+            grd.addColorStop(.7, options.secondary ? options.secondary : "orange");
+            grd.addColorStop(1, options.tertiary ? options.tertiary : "white");
             const rect = new Rectangle(rms, -barWidth / 2, grd, barHeight, barWidth)
             rect.draw(ctx);
         }

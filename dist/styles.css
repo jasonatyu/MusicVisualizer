@@ -136,7 +136,7 @@ button[data-playing="false"] .fa-pause {
     z-index: 100;
     top: 50px;
     right: 10px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19)
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19);
 }
 
 #visual-controls h3 {
@@ -144,8 +144,16 @@ button[data-playing="false"] .fa-pause {
     font-size: 14px;
     font-weight: 600;
     text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#visual-controls button:hover {
+    cursor: pointer;
+}
+
+#about, #settings-title {
+    text-decoration: underline;
 }
 
 #visual-controls p {
@@ -200,6 +208,32 @@ button[data-playing="false"] .fa-pause {
 
 #usa {
     background-image: linear-gradient(red, white, blue);
+    border-radius: 100%;
+    height: 20px;
+    width: 20px;
+}
+
+#theme {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#desert {
+    background-image: linear-gradient(#ff0000, #ff8d00, #ffdc07);
+    border-radius: 100%;
+    height: 20px;
+    width: 20px;
+}
+
+#space {
+    background-image: linear-gradient(#141717, #4a5457, #e1e5e6);
+    border-radius: 100%;
+    height: 20px;
+    width: 20px;
+}
+
+#tundra {
+    background-image: linear-gradient(#2A8EE0, #B5E8FF, #FFFFFF);
     border-radius: 100%;
     height: 20px;
     width: 20px;
