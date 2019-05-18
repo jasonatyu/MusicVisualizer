@@ -13,7 +13,7 @@ class PulsingCircle extends Circle {
         this.ctx.strokeStyle = "white";
         this.ctx.lineWidth = 3;
         this.ctx.stroke();
-        this.currentRadius += 10; 
+        this.currentRadius *= 1.1; 
         if (this.currentRadius < 1000) {
             requestAnimationFrame(this.draw.bind(this));
         }

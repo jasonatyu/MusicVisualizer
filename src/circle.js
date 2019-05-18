@@ -25,28 +25,26 @@ class Circle extends Shape {
     }
 
     static randomColor() {
-        let color = "#";
-        for (let i = 0; i < 6; i++) {
-            color += HEX_DIGITS[Math.floor((Math.random() * 16))];
-        }
+        let color = "#FFFFFF";
         return color;
     };
 
     static radius(maxX, maxY, numCircles) {
-        let targetCircleArea = (maxX * maxY) / numCircles;
-        let targetRadius = Math.sqrt(targetCircleArea / Math.PI);
-        return 2 * targetRadius;
+        // let targetCircleArea = (maxX * maxY) / numCircles;
+        // let targetRadius = Math.sqrt(targetCircleArea / Math.PI);
+        // return 2 * targetRadius;
+        return 1;
     }
 
     moveRandom(maxX, maxY) {
-        let dx = (Math.random() * 2) - 1;
-        let dy = (Math.random() * 2) - 1;
+        let dx = Math.random();
+        let dy = Math.random();
         this.x = Math.abs((this.x + (dx * this.radius * 0.1)) % maxX);
         this.y = Math.abs((this.y + (dy * this.radius * 0.1)) % maxY);
     }
 
     updateRadius(rms) {
-        this.radius = rms*.5;
+        this.radius = rms*.03;
     }
 
 }

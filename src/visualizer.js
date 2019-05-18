@@ -7,7 +7,7 @@ class Visualizer {
         this.analyzer = analyzer;
         this.bufferLength = this.analyzer.frequencyBinCount;
         this.dataArray = new Uint8Array(this.bufferLength);
-        this.analyzer.fftSize = 1024;
+        this.analyzer.fftSize = 2048;
         this.peak = 50;
     }
 
@@ -49,7 +49,7 @@ class Visualizer {
         for (let i = 0; i < 360; i += (360/bars)) {
             const barWidth = (2 * Math.PI * rms) / bars;
             const barHeight = (canvas.height * (this.dataArray[i] / 255)) * .8;
-            ctx.rotate(2 * (Math.PI / 180));
+            ctx.rotate(2 * Math.PI / 180);
             const grd = ctx.createLinearGradient(0, 0, canvas.height*.8, 0)
             grd.addColorStop(0, "red");
             grd.addColorStop(.5, "orange");

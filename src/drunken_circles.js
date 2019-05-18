@@ -29,7 +29,7 @@ class DrunkenCircles {
         this.analyzer.getByteFrequencyData(this.dataArray);
         const rms = this.getRMS(this.dataArray);
         this.circles.forEach((circle) => circle.draw(ctx));
-        // this.moveCircles();
+        this.moveCircles();
         this.updateRadius(rms);
     }
 

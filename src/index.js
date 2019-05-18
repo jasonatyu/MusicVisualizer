@@ -1,5 +1,7 @@
 const Visualizer = require('./visualizer');
 const DrunkenCircles = require('./drunken_circles');
+const BeatingCircle = require('./beating_circle');
+const Bars = require('./bars');
 
 document.addEventListener("DOMContentLoaded", () => {
     let canvas = document.getElementById("canvas");
@@ -20,6 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let visualizer = new Visualizer(analyzer);
     let drunken = new DrunkenCircles(canvas, analyzer);
+    let beatingCircle = new BeatingCircle(analyzer);
+    let bars = new Bars(analyzer);
     let checked;
     const radio = document.getElementsByName("visualization");
     for (let i = 0; i < radio.length; i++) {
@@ -28,23 +32,35 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         radio[i].onclick = function () {
             if (radio[i].value === 'default') {
-                clearCanvas();
                 checked = 'default';
             } else if (radio[i].value === 'drunken') {
-                clearCanvas();
                 checked = 'drunken';
+            } else if (radio[i].value === 'beating') {
+                checked = 'beating';
+            } else if (radio[i].value === 'bars') {
+                checked = 'bars';
             }
         }
     }
     
+    // default fill style 
     let fillStyle = "#272B34";
 
+    // request animation frame 
     function loop() {
         requestAnimationFrame(loop)
         if (checked === 'default') {
+            clearCanvas();
             visualizer.draw(fillStyle, canvas, ctx)
         } else if (checked === 'drunken') {
+            clearCanvas();
             drunken.draw(fillStyle, ctx)
+        } else if (checked === 'beating') {
+            clearCanvas();
+            beatingCircle.draw(fillStyle, canvas, ctx)
+        } else if (checked === 'bars') {
+            clearCanvas();
+            bars.draw(fillStyle, canvas, ctx)
         }
     }
     loop();
@@ -52,6 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // visual settings 
     const dark = document.getElementById("dark")
     const light = document.getElementById("light")
+    const usa = document.getElementById("usa")
     const controls = document.getElementById("controls");
     const controlButtons = document.getElementsByClassName("fas");
 
@@ -59,15 +76,22 @@ document.addEventListener("DOMContentLoaded", () => {
         fillStyle = "#272B34";
         controls.style.color = "#eee";
         Array.from(controlButtons).forEach((button) => button.style.color = "#eee");
-        // visualizer.draw(fillStyle, canvas, ctx);
     });
 
     light.addEventListener("click", function () {
         fillStyle = "#ffe0bd";
         controls.style.color = "#272B34";
         Array.from(controlButtons).forEach((button) => button.style.color = "#272B34");
+    });
 
-        // visualizer.draw(fillStyle, canvas, ctx);
+    usa.addEventListener("click", function () {
+        const grd = ctx.createLinearGradient(0, 0, canvas.width, canvas.height)
+        grd.addColorStop(0, "red");
+        grd.addColorStop(.9, "white");
+        grd.addColorStop(1, "blue");
+        fillStyle = grd;
+        controls.style.color = "#272B34";
+        Array.from(controlButtons).forEach((button) => button.style.color = "#272B34");
     });
 
 
@@ -80,6 +104,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const file = this.files[0];
         const src = URL.createObjectURL(file);
         audioElement.src = src;
+        audioCtx.resume();
+        audioElement.play();
+        playButton.dataset.playing === 'true';
     });
 
     // play and pause audio
@@ -127,6 +154,8 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.style.display = "none";
         audioCtx.resume();
         audioElement.play();
+        playButton.dataset.playing === 'true';
+
     }
 
     function clearCanvas() {
