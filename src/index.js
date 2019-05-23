@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const audioCtx = new AudioContext();
 
     const audioElement = document.querySelector('#audio');
+    audioElement.src = 'https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/AudioPreview128/v4/47/93/39/4793396d-2fc8-4113-df87-4b361c2d40cd/mzaf_2242804860096860666.plus.aac.p.m4a';
     const track = audioCtx.createMediaElementSource(audioElement);
     const gainNode = audioCtx.createGain();
     const analyzer = audioCtx.createAnalyser();
@@ -109,7 +110,6 @@ document.addEventListener("DOMContentLoaded", () => {
     demo.addEventListener('click', function() {
         if (audioCtx.state === 'suspended') {
             audioCtx.resume();
-            audioElement.src = 'https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/AudioPreview128/v4/47/93/39/4793396d-2fc8-4113-df87-4b361c2d40cd/mzaf_2242804860096860666.plus.aac.p.m4a';
         }
         audioElement.play();
         visualizer.resetPeak();
