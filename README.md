@@ -19,7 +19,7 @@ draw() {
         if (this.currentRadius < 2000) {
             requestAnimationFrame(this.draw.bind(this));
         }
-    }
+}
 ```
 
 ### Functionality
