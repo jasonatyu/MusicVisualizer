@@ -4,6 +4,8 @@
 
 Music Visualizer is an audio visualization tool that allows users to upload a song and control different settings to visualize audio while playing the song. 
 
+![screenshot](https://orange-music-pro.s3-us-west-1.amazonaws.com/Screen+Shot+2019-05-28+at+4.29.58+PM.png)
+
 ### Functionality
 
 * Users can upload an audio file to play or select from a demo file. 
