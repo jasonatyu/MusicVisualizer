@@ -6,7 +6,7 @@ Music Visualizer is an audio visualization tool that allows users to upload a so
 
 ![screenshot](https://orange-music-pro.s3-us-west-1.amazonaws.com/Screen+Shot+2019-05-28+at+4.29.58+PM.png)
 
-An example visual component, `PulsingCircle,` was rendered as follows, where both the opacity and thickness of the circle increased with the size of the radius: 
+An example visual component, `PulsingCircle`, was rendered as follows, where both the opacity and thickness of the circlular ring increased with the size of the radius until the radius reached a max threshold, at which point the animation ends for that specific object. 
 
 ```javascript
 draw() {
