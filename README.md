@@ -6,6 +6,22 @@ Music Visualizer is an audio visualization tool that allows users to upload a so
 
 ![screenshot](https://orange-music-pro.s3-us-west-1.amazonaws.com/Screen+Shot+2019-05-28+at+4.29.58+PM.png)
 
+An example visual component, `PulsingCircle,` was rendered as follows, where both the opacity and thickness of the circle increased with the size of the radius: 
+
+```javascript
+draw() {
+        this.ctx.beginPath();
+        this.ctx.arc(this.x, this.y, this.currentRadius, 0, 2 * Math.PI);
+        this.ctx.strokeStyle = "rgba(255, 255, 255, " + this.currentRadius/500 + ")"
+        this.ctx.lineWidth = this.currentRadius *.01;
+        this.ctx.stroke();
+        this.currentRadius *= 1.1; 
+        if (this.currentRadius < 2000) {
+            requestAnimationFrame(this.draw.bind(this));
+        }
+    }
+```
+
 ### Functionality
 
 * Users can upload an audio file to play or select from a demo file. 
