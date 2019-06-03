@@ -16,13 +16,12 @@ Music Visualizer is an audio visualization tool that allows users to upload a so
 
 The app will consist of a single page with an upload audio file modal, audio controls, visualization controls, and a box where the visualization will be rendered that covers the entire visible page. 
 
-##### Technologies employed
-
+### Technologies employed
 * Vanilla JavaScript for the upload modal and the visualizer controls.
 * `Web Audio API` for audio processing and controls. 
-* `D3.js` for rendering the audio visualization. 
+* `HTML5 Canvas` for rendering the audio visualization. 
 
-##### Main files
+### Main files
 * `index.js` handle creating and updating DOM elements.
 * `audio.js` handle audio processing and controls.
 * `visualizer.js` handle audio visualization and controls.
