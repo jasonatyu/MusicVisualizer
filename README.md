@@ -26,31 +26,26 @@ The app will consist of a single page with an upload audio file modal, audio con
 * `visualizer.js` handle audio visualization and controls.
 
 ### MVPs
-- [] Uploading a new audio file.
-- [] Basic controls (play/pause) for an uploaded file. 
-- [] Basic visualizer settings (color, style, size, speed)
+- [x] Uploading a new audio file.
+- [x] Basic controls (play/pause) for an uploaded file. 
+- [x] Basic visualizer settings (color, style, size, speed)
 
 ### Development timeline
 
 ##### Day 1:
-- [] Review `Web Audio API` and `D3.js` 
-- [] Complete basic page skeleton and functionality.
+- [x] Review `Web Audio API` 
+- [x] Complete basic page skeleton and functionality.
 
 ##### Day 2:
-- [] Complete audio file upload functionality.
-- [] Complete audio controls functionality.
-- [] Start on visualizer rendering and functionality.
+- [x] Complete audio file upload functionality.
+- [x] Complete audio controls functionality.
+- [x] Start on visualizer rendering and functionality.
 
 ##### Day 3:
-- [] Complete visualization settings functionality.
-- [] Refine visualizer rendering and functionality.
+- [x] Complete visualization settings functionality.
+- [x] Refine visualizer rendering and functionality.
 
 ##### Day 4:
-- [] Add more complex visualization options.
-- [] Finish styling page.
-
-##### Day 5:
-- [] Implement bonus features.
-
-### Bonus features
+- [x] Add more complex visualization options.
+- [x] Finish styling page.
 
